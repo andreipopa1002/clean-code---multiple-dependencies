@@ -1,0 +1,23 @@
+- what were your priorities, and why?
+My initial thoughts were to the user. What the user wants and what he is willing to forgive and what not. 
+The user expects an app that presents the articles starting with the headline image and all the text. The user expects to be able to add articles to favourites and remove them, also he expects to be able to see all favourite articles. 
+From my experience, the user can forgive outdated UI, even an odd bug now and then, but the user does not forgive unstable functionality and crashes. You might release with a dull and unimpressive UI as long as the functionality is stable and come back with other releases with visual improvements. You might even learn something from the previous release and apply the learning to the new one.
+Looking at the code I noticed that the project is using a couple of external dependencies that were coupled with an improper use of MVC. The project was not open to additions and modifications. The persistence object was coupled with the UI, the Article object was doing more than one thing and the dependencies were not isolated behind interfaces. Most of the SOLID principles were violated.
+I decided tackle only the first screen that the user sees. To extract the article viewing functionality into multiple objects and connect them in an almost VIPER pattern that I am familiar with. From an engineering perspective, my concern was to keep the components decoupled isolated, hide the dependencies behind interfaces and write the code in a testable format.
+
+-if you had another two days, what would you have tackled next? 
+Error handling. I would rework the persistence component and make sure that all the force unwrapped things disappear. Make sure I use Realm the proper way. Add all the functionality on the second screen. Investigate for a better way of hiding the frameworks. I assume that the second screen needs to be pushed with a custom transition. I would make the swipe animation in the collection view more like a page swipe. !!! Definitely better method naming !!! . 
+Guardian api key should be stored into a plist and retrieved when needed.
+Maybe even write tests.
+
+- what would you change about the structure of the code?
+I would fix the favourites screen to use the same structure as the article screen. I would convert the favourite screen to a storyboard.
+
+- what bugs did you find but not fix?
+There are a couple of missing features on the favourites screen. The done button, the search bar, but not to upset the user I made the search bar hidden by the nav bar.
+
+-what would you change about the visual design of the app? 
+The star button is too small, it does not comply with the Apple guide line size of 44x44. Those two buttons should be more accessible to the user, he should not have to scroll all the way down to find or notice them.
+Some users prefer to see more images about an article then text, maybe providing a collection of images might be a good improvement.
+Being able to see only a couple of articles, without any control on the type or quantity of articles does not provide much value to the user so I would allow the user to search for articles to be rendered.
+If the user is able the see all the favorited articles he should be able to un-favourite them on the spot.
